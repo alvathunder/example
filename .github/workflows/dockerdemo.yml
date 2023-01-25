@@ -3,27 +3,24 @@ name: demo
 on: [push, workflow_dispatch] #will be triggered by a push and can be triggered manually
 
 
-jobs:
+jobs: # my job
   build: 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # runner
 
-    steps: 
+    steps: # step 
     - name: check out code 
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3 # github-hosted action that collects your code
     
-    - name: installing apache 
-      run: |
-        apt update
-        apt upgrade
-        apt install apache2 -y
-        systemctl enable --now apache2.service
-        systemctl status apache2
-      shell: bash
-    
-    - name: Building docker image
-      uses: mr-smithers-excellent/docker-build-push@v4
+    - name: execute shell script #executing a shell script 
+      run: | # states that we will be running several commands
+         chmod +x ./app/script.sh # making the script executable
+         ./app/script.sh #path
+      shell: bash # specifying what shell 
+        
+    - name: Building docker image # building and pushing a docker image to dockerhub repository
+      uses: mr-smithers-excellent/docker-build-push@v4 # github-hosted action
       with: 
-          image: alvathunder/action
-          registry: docker.io
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          image: alvathunder/action # name of image
+          registry: docker.io # 
+          username: ${{ secrets.DOCKER_USERNAME }} # collecting my docker username from stored secrets
+          password: ${{ secrets.DOCKER_PASSWORD }} # collecting my docker password from stored secrets
