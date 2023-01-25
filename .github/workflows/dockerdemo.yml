@@ -3,13 +3,14 @@ name: demo
 on: [push, workflow_dispatch] #will be triggered by a push and can be triggered manually
 
 
-jobs: # my job
-  build: 
+jobs:
+
+  build:
     runs-on: ubuntu-latest # runner
 
-    steps: # step 
-    - name: check out code 
-      uses: actions/checkout@v3 # github-hosted action that collects your code
+    steps: 
+    - name: Check out code
+      uses: actions/checkout@v3 # Github-hosted action that collects your code
     
     - name: Greeting
       run: |
@@ -17,14 +18,14 @@ jobs: # my job
         echo "We'll just be building and pushing a Docker image to DockerHub."
         
     - name: Building docker image 
-      uses: mr-smithers-excellent/docker-build-push@v4 # github-hosted action
+      uses: mr-smithers-excellent/docker-build-push@v4 # Github-hosted action
       with: 
-          image: alvathunder/action # name of image
+          image: alvathunder/action # Name of image
           registry: docker.io # 
-          username: ${{ secrets.DOCKER_USERNAME }} # collecting my docker username from stored secrets
-          password: ${{ secrets.DOCKER_PASSWORD }} # collecting my docker password from stored secrets
+          username: ${{ secrets.DOCKER_USERNAME }} # Collecting my docker username from stored secrets
+          password: ${{ secrets.DOCKER_PASSWORD }} # Collecting my docker password from stored secrets
           
-    - name: Setting variable
+    - name: Setting variable # Enviroment variables can be anythin from DB-names, Ports etc.
       env:
         MY_NAME: Alva
       run: | 
