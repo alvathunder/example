@@ -11,13 +11,12 @@ jobs: # my job
     - name: check out code 
       uses: actions/checkout@v3 # github-hosted action that collects your code
     
-    - name: execute shell script #executing a shell script 
-      run: | # states that we will be running several commands
-         chmod +x ./app/script.sh # making the script executable
-         ./app/script.sh #path
-      shell: bash # specifying what shell 
+    - name: Greeting
+      run: |
+        echo Hi, welcome to this simple GitHub Actions example!
+        echo We'll just be building and pushing a Docker image to DockerHub.
         
-    - name: Building docker image # building and pushing a docker image to dockerhub repository
+    - name: Building docker image 
       uses: mr-smithers-excellent/docker-build-push@v4 # github-hosted action
       with: 
           image: alvathunder/action # name of image
