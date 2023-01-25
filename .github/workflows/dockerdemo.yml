@@ -24,3 +24,10 @@ jobs: # my job
           registry: docker.io # 
           username: ${{ secrets.DOCKER_USERNAME }} # collecting my docker username from stored secrets
           password: ${{ secrets.DOCKER_PASSWORD }} # collecting my docker password from stored secrets
+          
+    - name: Setting variable
+      env:
+        MY_NAME: Alva
+      run: | 
+        echo Hello, $MY_NAME
+        echo The image can now be collected from your Dockerhub!
