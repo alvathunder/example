@@ -13,8 +13,8 @@ jobs: # my job
     
     - name: Greeting
       run: |
-        echo Hi, welcome to this simple GitHub Actions example!
-        echo We'll just be building and pushing a Docker image to DockerHub.
+        echo "Hi, welcome to this simple GitHub Actions example!"
+        echo "We'll just be building and pushing a Docker image to DockerHub."
         
     - name: Building docker image 
       uses: mr-smithers-excellent/docker-build-push@v4 # github-hosted action
@@ -28,5 +28,5 @@ jobs: # my job
       env:
         MY_NAME: Alva
       run: | 
-        echo Hello, $MY_NAME
-        echo The image can now be collected from your Dockerhub!
+        echo "Hello, $MY_NAME"
+        echo "The image can now be collected from your Dockerhub!"
