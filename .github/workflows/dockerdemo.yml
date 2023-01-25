@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }} # Collecting my docker username from stored secrets
           password: ${{ secrets.DOCKER_PASSWORD }} # Collecting my docker password from stored secrets
           
-    - name: Setting variable # Enviroment variables can be anythin from DB-names, Ports etc.
+    - name: Setting variable # Enviroment variables can be anything from DB-names, Ports etc.
       env:
         MY_NAME: Alva
       run: | 
