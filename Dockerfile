@@ -8,6 +8,6 @@ COPY . .
 
 WORKDIR /app
 
-RUN chmod +x scripts.sh
+RUN chmod +x script.sh
 
-ENTRYPOINT ["bash","./scripts.sh"]
+ENTRYPOINT ["bash","./script.sh"]
