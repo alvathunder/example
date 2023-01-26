@@ -1,6 +1,6 @@
 name: Simple demo
 
-on: [push, workflow_dispatch] #Will be triggered by a push and can be triggered manually
+on: [push, workflow_dispatch] # Will be triggered by a push and can be triggered manually
 
 jobs:
 
@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v3 # Github-hosted action that collects your code
     
     - name: Greeting
-      run: |
+      run: | # This pipe tells us that we will be using multiple commands
         echo "Hi, welcome to this simple GitHub Actions example!"
         echo "We'll just be building and pushing a Docker image to DockerHub."
         
@@ -20,13 +20,13 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v4 # Github-hosted action
       with: 
           image: alvathunder/action # Name of image
-          registry: docker.io # 
-          username: ${{ secrets.DOCKER_USERNAME }} # Collecting my docker username from stored secrets
-          password: ${{ secrets.DOCKER_PASSWORD }} # Collecting my docker password from stored secrets
+          registry: docker.io 
+          username: ${{ secrets.DOCKER_USERNAME }} # Collecting my Docker username from stored secrets
+          password: ${{ secrets.DOCKER_PASSWORD }} # Collecting my Docker password from stored secrets
           
     - name: Setting variable # Environment variables can be anything from DB-names, Ports etc.
       env:
         MY_NAME: Alva
       run: | 
-        echo "Hello, $MY_NAME"
+        echo "All done, $MY_NAME"
         echo "The image can now be collected from your Dockerhub!"
